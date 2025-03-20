@@ -1,65 +1,65 @@
+import 'package:donut_app_2a_poxtan/utils/burger_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:donut_app_2a_poxtan/utils/donut_tile.dart';
 
 class BurgerTab extends StatelessWidget {
-  //Lista de donas
-  final List donutsOnSale = [
-    // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
+  //Lista de hamburguesas
+  final List burgerOnSale = [
+    // [ burgerFlavor, burgerStore, burgerPrice, burgerColor, imageName ]
     [
-      "Ice Cream",
-      "Krispy Creme",
+      "Classic Burger",
+      "Burger King",
       "36",
       Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/Classic_burger.jpg"
     ],
     [
-      "Strawberry",
-      "Dunkin donuts",
+      "Bacon Burger",
+      "Carls Jr",
       "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
+      "lib/images/Bacon_burger.png"
     ],
     [
-      "Grape Ape",
-      "Krispy Kreme",
+      "Hawaian Burger",
+      "Mc Donalds",
       "84",
       Colors.purple,
-      "lib/images/grape_donut.png"
+      "lib/images/Hawaian_burger.png"
     ],
     [
-      "Choco",
-      "Dunkin donuts",
+      "Double Bacon Burger",
+      "Mitica",
       "95",
       Colors.green,
-      "lib/images/chocolate_donut.png"
+      "lib/images/Double_bacon_burger.png"
     ],
     [
-      "Ice Cream",
-      "Krispy Creme",
+      "Chicken Sandwich",
+      "KFC",
       "36",
       Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/Chicken_sandwich.png"
     ],
     [
-      "Strawberry",
-      "Dunkin donuts",
+      "Buffalo Chicken Sandwich",
+      "Las alitas",
       "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
+      "lib/images/Buffalo_chicken_sandwich.png"
     ],
     [
-      "Grape Ape",
-      "Krispy Kreme",
+      "Mexicana Burger",
+      "Fridays",
       "84",
       Colors.purple,
-      "lib/images/grape_donut.png"
+      "lib/images/Mexicana_burger.png"
     ],
     [
-      "Choco",
-      "Dunkin donuts",
+      "Monstruosa Burger",
+      "Angry Angus",
       "95",
       Colors.green,
-      "lib/images/chocolate_donut.png"
+      "lib/images/Monstruosa_burger.png"
     ],
   ];
   BurgerTab({super.key});
@@ -68,7 +68,7 @@ class BurgerTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
         //cuanto elementos tiene
-        itemCount: donutsOnSale.length,
+        itemCount: burgerOnSale.length,
         padding: const EdgeInsets.all(12),
         //Encargado de organizar la cuadricula
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -78,12 +78,12 @@ class BurgerTab extends StatelessWidget {
             childAspectRatio: 1 / 1.5),
         itemBuilder: (context, index) {
           //Elemento individual de una cuadricula
-          return DonutTile(
-            donutFlavor: donutsOnSale[index][0],
-            donutStore: donutsOnSale[index][1],
-            donutPrice: donutsOnSale[index][2],
-            donutColor: donutsOnSale[index][3],
-            imageName: donutsOnSale[index][4],
+          return BurgerTile(
+            burgerFlavor: burgerOnSale[index][0],
+            burgerStore: burgerOnSale[index][1],
+            burgerPrice: burgerOnSale[index][2],
+            burgerColor: burgerOnSale[index][3],
+            imageName: burgerOnSale[index][4],
           );
         });
   }
