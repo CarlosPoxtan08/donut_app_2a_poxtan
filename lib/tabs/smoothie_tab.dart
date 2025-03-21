@@ -2,89 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:donut_app_2a_poxtan/utils/donut_tile.dart';
 
 class SmoothieTab extends StatelessWidget {
-  //Lista de donas
-  final List donutsOnSale = [
+  final Function(int, double) onAddToCart;
+  final List smoothieOnSale = [
     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
+    ["Mango", "Starbucks", "36", Colors.yellow, "lib/images/mango.png"],
+    ["Strawberry", "Italian Coffee", "45", Colors.pink, "lib/images/fresa.png"],
     [
-      "Ice Cream",
-      "Krispy Creme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    [
-      "Grape Ape",
-      "Krispy Kreme",
+      "Banana",
+      "Starbucks",
       "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
+      Colors.yellow,
+      "lib/images/smoothplatano.png"
     ],
     [
-      "Choco",
-      "Dunkin donuts",
+      "Peanut Butter",
+      "Italian Coffe",
       "95",
       Colors.brown,
-      "lib/images/chocolate_donut.png"
+      "lib/images/peanut.png"
     ],
-    [
-      "Ice Cream",
-      "Krispy Creme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    [
-      "Grape Ape",
-      "Krispy Kreme",
-      "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
-    ],
-    [
-      "Choco",
-      "Dunkin donuts",
-      "95",
-      Colors.brown,
-      "lib/images/chocolate_donut.png"
-    ],
+    ["Oreo", "Italian Coffee", "60", Colors.brown, "lib/images/oreo.png"],
+    ["Piña-Colada", "Starbucks", "78", Colors.yellow, "lib/images/colada.png"],
+    ["Choco", "Starbucks", "99", Colors.brown, "lib/images/choco.png"],
+    ["Chamoy", "Dairy Queen", "81", Colors.orange, "lib/images/chamoy.png"],
   ];
-  SmoothieTab({super.key});
+  SmoothieTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        //cuanto elementos tiene
-        itemCount: donutsOnSale.length,
+        //Cúantos elementos tiene
+        itemCount: smoothieOnSale.length,
         padding: const EdgeInsets.all(12),
-        //Encargado de organizar la cuadricula
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //Determina el numero de columnas
+        //Encargado de organizar la cuadrícula
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.50),
         itemBuilder: (context, index) {
-          //Elemento individual de una cuadricula
+          //Elemento individual de la cuadrícula
           return DonutTile(
-            donutFlavor: donutsOnSale[index][0],
-            donutStore: donutsOnSale[index][1],
-            donutPrice: donutsOnSale[index][2],
-            donutColor: donutsOnSale[index][3],
-            imageName: donutsOnSale[index][4],
-          );
+              donutFlavor: smoothieOnSale[index][0],
+              donutStore: smoothieOnSale[index][1],
+              donutPrice: smoothieOnSale[index][2],
+              donutColor: smoothieOnSale[index][3],
+              imageName: smoothieOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

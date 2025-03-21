@@ -2,89 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:donut_app_2a_poxtan/utils/donut_tile.dart';
 
 class PancakesTab extends StatelessWidget {
-  //Lista de donas
-  final List donutsOnSale = [
+  final Function(int, double) onAddToCart;
+  final List pancakesOnSale = [
     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
-    [
-      "Ice Cream",
-      "Krispy Creme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    [
-      "Grape Ape",
-      "Krispy Kreme",
-      "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
-    ],
-    [
-      "Choco",
-      "Dunkin donuts",
-      "95",
-      Colors.brown,
-      "lib/images/chocolate_donut.png"
-    ],
-    [
-      "Ice Cream",
-      "Krispy Creme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    [
-      "Grape Ape",
-      "Krispy Kreme",
-      "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
-    ],
-    [
-      "Choco",
-      "Dunkin donuts",
-      "95",
-      Colors.green,
-      "lib/images/chocolate_donut.png"
-    ],
+    ["Natural", "I-HOP", "36", Colors.yellow, "lib/images/natural.png"],
+    ["Strawberry", "I-HOP", "45", Colors.red, "lib/images/fresahot.png"],
+    ["Chocolate", "I-HOP", "84", Colors.brown, "lib/images/chocolate.png"],
+    ["Hot-Banana", "I-HOP", "95", Colors.yellow, "lib/images/hotplatano.png"],
+    ["Hot-Tower", "I HOP", "60", Colors.brown, "lib/images/hotower.png"],
+    ["Hot-Cupcake", "I-HOP", "78", Colors.purple, "lib/images/colores.png"],
+    ["Hot-Pay", "I-HOP", "99", Colors.purple, "lib/images/pay.png"],
+    ["Hot-Hershey", "I-HOP", "81", Colors.yellow, "lib/images/hershey.png"],
   ];
-  PancakesTab({super.key});
+  PancakesTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        //cuanto elementos tiene
-        itemCount: donutsOnSale.length,
+        //Cúantos elementos tiene
+        itemCount: pancakesOnSale.length,
         padding: const EdgeInsets.all(12),
-        //Encargado de organizar la cuadricula
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //Determina el numero de columnas
+        //Encargado de organizar la cuadrícula
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.50),
         itemBuilder: (context, index) {
-          //Elemento individual de una cuadricula
+          //Elemento individual de la cuadrícula
           return DonutTile(
-            donutFlavor: donutsOnSale[index][0],
-            donutStore: donutsOnSale[index][1],
-            donutPrice: donutsOnSale[index][2],
-            donutColor: donutsOnSale[index][3],
-            imageName: donutsOnSale[index][4],
-          );
+              donutFlavor: pancakesOnSale[index][0],
+              donutStore: pancakesOnSale[index][1],
+              donutPrice: pancakesOnSale[index][2],
+              donutColor: pancakesOnSale[index][3],
+              imageName: pancakesOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

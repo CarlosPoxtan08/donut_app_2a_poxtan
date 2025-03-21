@@ -1,90 +1,66 @@
-import 'package:donut_app_2a_poxtan/utils/burger_tile.dart';
+import 'package:donut_app_2a_poxtan/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
 class BurgerTab extends StatelessWidget {
-  //Lista de hamburguesas
-  final List burgerOnSale = [
-    // [ burgerFlavor, burgerStore, burgerPrice, burgerColor, imageName ]
+  final Function(int, double) onAddToCart;
+  final List burguerOnSale = [
+    // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
     [
-      "Classic Burger",
+      "Juice Burger",
       "Burger King",
-      "36",
-      Colors.blue,
-      "lib/images/Classic_burger.jpg"
+      "65",
+      Colors.orange,
+      "lib/images/Juiceburger.png"
     ],
     [
-      "Bacon Burger",
-      "Carls Jr",
+      "Double Meat",
+      "Burger King",
       "45",
       Colors.red,
-      "lib/images/Bacon_burger.png"
+      "lib/images/Doblecarne.png"
     ],
     [
-      "Hawaian Burger",
-      "Mc Donalds",
-      "84",
-      Colors.purple,
-      "lib/images/Hawaian_burger.png"
+      "Jhony Burger",
+      "Johnny rockets",
+      "66",
+      Colors.yellow,
+      "lib/images/jhonybur.png"
     ],
+    ["Mr. Bacon", "McDonalds", "82", Colors.brown, "lib/images/mr.bacon.png"],
+    ["Wakey wakey!!", "McDonalds", "75", Colors.yellow, "lib/images/wakey.png"],
+    ["ALL IN", "Burger King", "80", Colors.brown, "lib/images/todoonada.png"],
     [
-      "Double Bacon Burger",
-      "Mitica",
-      "95",
+      "Green Burger",
+      "Johny rockets",
+      "65",
       Colors.green,
-      "lib/images/Double_bacon_burger.png"
+      "lib/images/green.png"
     ],
-    [
-      "Chicken Sandwich",
-      "KFC",
-      "36",
-      Colors.blue,
-      "lib/images/Chicken_sandwich.png"
-    ],
-    [
-      "Buffalo Chicken Sandwich",
-      "Las alitas",
-      "45",
-      Colors.red,
-      "lib/images/Buffalo_chicken_sandwich.png"
-    ],
-    [
-      "Mexicana Burger",
-      "Fridays",
-      "84",
-      Colors.purple,
-      "lib/images/Mexicana_burger.png"
-    ],
-    [
-      "Monstruosa Burger",
-      "Angry Angus",
-      "95",
-      Colors.green,
-      "lib/images/Monstruosa_burger.png"
-    ],
+    ["Mini Dini", "McDonalds", "78", Colors.blue, "lib/images/mini.png"],
   ];
-  BurgerTab({super.key});
+  BurgerTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        //cuanto elementos tiene
-        itemCount: burgerOnSale.length,
+        //Cúantos elementos tiene
+        itemCount: burguerOnSale.length,
         padding: const EdgeInsets.all(12),
-        //Encargado de organizar la cuadricula
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //Determina el numero de columnas
+        //Encargado de organizar la cuadrícula
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.50),
         itemBuilder: (context, index) {
-          //Elemento individual de una cuadricula
-          return BurgerTile(
-            burgerFlavor: burgerOnSale[index][0],
-            burgerStore: burgerOnSale[index][1],
-            burgerPrice: burgerOnSale[index][2],
-            burgerColor: burgerOnSale[index][3],
-            imageName: burgerOnSale[index][4],
-          );
+          //Elemento individual de la cuadrícula
+          return DonutTile(
+              donutFlavor: burguerOnSale[index][0],
+              donutStore: burguerOnSale[index][1],
+              donutPrice: burguerOnSale[index][2],
+              donutColor: burguerOnSale[index][3],
+              imageName: burguerOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

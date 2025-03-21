@@ -15,6 +15,7 @@ class DonutTile extends StatelessWidget {
     required this.donutPrice,
     required this.donutColor,
     required this.imageName,
+    required Function(int p1, double p2) onAddToCart,
   });
 
   @override
